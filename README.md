@@ -4,24 +4,27 @@
 
 Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
 
-- The aim of the project was to make a 5 day weather forecast which saved the cities you had searched for in local storage so that they were there when you come back to the site
+- The aim of the project is to provide property information alongside crime information for people who are looking for a house. 
 
-The project specifically wanted the user to be able to:
+This project uses the Police API and the Zoopla API,
 
-- When a user searches for a city they are presented with current and future conditions for that city and that city is added to the search history
-- When a user views the current weather conditions for that city they are presented with:
-    The city name
-    The date
-    An icon representation of weather conditions
-    The temperature
-    The humidity
-    The wind speed
-- When a user view future weather conditions for that city they are presented with a 5-day forecast that displays:
-    The date
-    An icon representation of weather conditions
-    The temperature
-    The humidity
-- When a user click on a city in the search history they are again presented with current and future conditions for that city
+# User Story
+
+A person looking for a house to buy comes to our website YourHood and searches by location or postcode.
+
+They get a list of houses available to buy, according to certain criteria they've chosen. They also have the choice to look at police data about the crime in the area.
+
+The user will have fulfilled their search criteria once they can search for houses in a particular area, by post code or location;
+
+The user will have fulfilled their search when they know the crime levels in the neighbourhood.
+
+The user gets the house price, details about the house [[number of bedrooms, bathrooms, garden or not, pictures]] and the neighbourhood information about the crime levels.
+
+# Additional:
+They could also reverse search from areas with a certain level of crime and link that back to houses available to purchase.
+
+Bonus:
+They can book a viewing with the estate agent.
 
 ## Installation
 
@@ -31,7 +34,7 @@ Click the link to run the website
 
 ## Usage
 
-Search for a cities weather forecast by typing it into the search bar and clicking search or clicking one of the history buttons to see their forecast
+Search for property prices and crime rites by typing into the search bar and clicking search;
 
 ![screenshot of ]()
 ![screenshot of ]()
