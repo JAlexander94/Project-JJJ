@@ -1,0 +1,19 @@
+.container,
+.input-group
+ {
+
+    max-width: 500px;
+    margin: auto;
+    display: grid;
+}
+select {
+    max-width: 450px;
+    margin-left: 150px;
+    display: grid;
+}
+
+.input-group {
+    margin-right: 675px;
+    max-width: 450px;
+
+}
