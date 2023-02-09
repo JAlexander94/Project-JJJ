@@ -32,7 +32,9 @@ $.ajax(settings).then(function (response) {
     latlon = response.bounding_box
     console.log(houseprices)
     console.log(averageprice)
-    console.log(latlon)
+    // temporary check for what comes back as latlon
+    let checkLatlon = JSON.stringify(latlon)
+    console.log("this is latlon: " + checkLatlon)
 });
 
 // function to average arrays
