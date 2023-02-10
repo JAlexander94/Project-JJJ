@@ -70,9 +70,9 @@ var queryURLAll = "https://data.police.uk/api/crimes-street/all-crime?lat=" + la
   });
 
   // setting local storage to get data from the form 
-  const resultsList = document.getElementById('results')
-localStorage.setItem("lastname", "Smith");
-localStorage.getItem("lastname");
+  const house = $('form.propertyType.house');
+localStorage.setItem("house", house);
+localStorage.getItem("house");
 
 
 

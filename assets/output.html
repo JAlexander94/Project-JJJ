@@ -53,12 +53,32 @@
 
 <a href="../index.html">Back to Search page</a>
 <script>
-const resultsList = document.getElementById('results')
-new URLSearchParams(window.location.search).forEach((value, name) => {
-resultsList.append('${name}: ${value}')
-resultsList.append(document.createElement('br'))
+// const resultsList = document.getElementById('results')
 
-})
+// new URLSearchParams(window.location.search).forEach((value, name) => {
+// resultsList.append('${name}: ${value}')
+// resultsList.append(document.createElement('br'))
+
+// })
+
+
+function getUrlParams() {
+  const search = window.location.search;
+  const params = new URLSearchParams(search);
+
+  const name = params.get("propertyType");
+  // const value = params.get("value");
+
+  console.log(`Property Type: ${name}`);
+  // console.log(`Value: ${value}`);
+  const resultsList = document.getElementById('results')
+  resultsList.append(`Property Type: ${name}`);
+
+}
+
+getUrlParams();
+
+
   </script>
          <!-- Moment.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
