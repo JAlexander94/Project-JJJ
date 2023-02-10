@@ -15,6 +15,10 @@
     font-weight: 700;
 }
 
+a {
+        color: white;
+    }
+
 select {
     max-width: 450px;
     margin-left: 150px;

@@ -43,19 +43,18 @@
     </div>
   </nav>
 
-<div class="container">
-  <h1>Search Results</h1>
+<div class="containerHouse">
+  <h1>House Search Results</h1>
   <!-- //This is where the content will be posted -->
  
   <div id="results"></div>
 
 </div>
 
-<a href="/index.html">Back to Search page</a>
+<a href="./index.html">Back to Search page</a>
 <script>
 const resultsList = document.getElementById('results')
 // let value = document.getElementById('searchForm');
-alert(value);
 new URLSearchParams(window.location.search).forEach((value, name) => {
  
 resultsList.append('${name}: ${value}')
