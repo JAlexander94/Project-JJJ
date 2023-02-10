@@ -78,7 +78,8 @@
 <!-- search form -->
 <div class="container">
   <h2>Search for your property</h2>
-  <form action="./assets/output.html" method="GET" id="searchForm" name="searchForm>
+  <form action="./assets/output.html" method="GET" id="searchForm" name="searchForm">
+    <fieldset>
     <label for="propertyType" class="bold">Type of Property</label>
 <select id="selectProperty" name="propertyType" class="formPropertyType" multiple aria-label="multiple select example">
   <option selected>Choose type of property</option>
@@ -87,14 +88,14 @@
   <option name="Any" value="Any">Any</option>
 </select>
 <br>
-<select class="formBedNumber" multiple aria-label="multiple select example">
+<select class="formBedNumber" name="formBedNumber" multiple aria-label="multiple select example">
   <option selected>Choose number of bedrooms</option>
   <option name="bed1" value="bed1">One</option>
   <option name="bed2" value="bed2">Two</option>
   <option name="bed3" value="bed3">Three+</option>
 </select>
 <br>
-<select class="priceRange multiple aria-label="multiple select example">
+<select class="priceRange multiple" name="priceRange" aria-label="multiple select example">
   <option name="priceRange" selected>Price Range</option>
   <option name="price1" value="1">£100,000+</option>
   <option name="price2" value="2">£100,001 to £200,000</option>
@@ -105,17 +106,20 @@
 <p><strong class="bold">Enter postcode or area</strong></p>
 <div class="input-group mb-3">
   <span class="input-group-text" id="basic-addon1"></span>
-  <input type="text" class="form-control" aria-label="Postcode" placeholder="e.g. BS1 or Bristol" required>
+  <input type="text" name="postcode" class="form-control" aria-label="Postcode" placeholder="e.g. BS1 or Bristol" required>
 </div>
 
 <div class="col-12">
- <label for="button"><button type="submit" value="Submit" class="button glow-effect">Search
+ <label for="button">
+  <button type="submit" value="Submit" 
+  class="button glow-effect form-control priceRange formBedNumber formPropertyType">Search
     <svg class="glow-container">
       <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
       <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
     </svg>
   </button></label>
   <button type="reset" class="button glow-effect">Clear</button>
+</fieldset>
 </form>
 </div>
 
