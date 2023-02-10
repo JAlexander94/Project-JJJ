@@ -49,11 +49,14 @@ body {
     background-image: conic-gradient(
         at 125% 50%,        
         rgba(255, 255, 21, 0.7),
-        rgba(68, 57, 235, 0.7),
+        rgba(238, 37, 104, 0.7),
         rgba(0, 255, 13, 0.7),
-        rgba(68, 57, 235, 0.7),
+        rgba(238, 37, 104, 0.7),
         rgba(255, 255, 21, 0.7)
     );
+}
+nav {
+    background-color: violet;
 }
 
 .button {

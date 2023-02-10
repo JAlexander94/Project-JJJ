@@ -11,7 +11,7 @@
 </head>
 <body>
  
-  <nav class="navbar navbar-expand-lg bg-light">
+  <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Triple JJJ</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,12 +51,10 @@
 
 </div>
 
-<a href="./index.html">Back to Search page</a>
+<a href="../index.html">Back to Search page</a>
 <script>
 const resultsList = document.getElementById('results')
-// let value = document.getElementById('searchForm');
 new URLSearchParams(window.location.search).forEach((value, name) => {
- 
 resultsList.append('${name}: ${value}')
 resultsList.append(document.createElement('br'))
 
