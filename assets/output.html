@@ -50,8 +50,19 @@
   <div id="results"></div>
 
 </div>
-<a href="/index.html">Back to Search page</a>
 
+<a href="/index.html">Back to Search page</a>
+<script>
+const resultsList = document.getElementById('results')
+// let value = document.getElementById('searchForm');
+alert(value);
+new URLSearchParams(window.location.search).forEach((value, name) => {
+ 
+resultsList.append('${name}: ${value}')
+resultsList.append(document.createElement('br'))
+
+})
+  </script>
          <!-- Moment.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   <!-- jQuery -->

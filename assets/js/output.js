@@ -70,14 +70,7 @@ var queryURLAll = "https://data.police.uk/api/crimes-street/all-crime?lat=" + la
   });
 
 
-const resultsList = document.getElementById('results')
-let value = document.getElementById('searchForm');
-new URLSearchParams(window.location.search).forEach((value, name) => {
- 
-resultsList.append('${name}: ${value}')
-resultsList.append(document.createElement('br'))
-alert(resultsList)
-})
+
 
 
 
