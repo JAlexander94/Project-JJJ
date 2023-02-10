@@ -26,6 +26,15 @@ var queryURLAll = "https://data.police.uk/api/crimes-street/all-crime?lat=" + la
 
      // for all crime
    console.log(response[0].category)
+   console.log(response[0].month)
+
+     let categoryTd = response[0].category;
+   let monthTd = response[0].month;
+   console.log("This is categoryTd: " + categoryTd);
+   console.log("This is monthTd: " + monthTd);
+
+
+
     // for stop and search
   //  console.log(response[0].legislation)
   //  console.log(response[0].age_range)
@@ -42,8 +51,34 @@ var queryURLAll = "https://data.police.uk/api/crimes-street/all-crime?lat=" + la
   //  const liEl = $("<li>");
   //  divEL.append(ulEL);
   //  ulEL.append(liEl);
-  //  $("p").append(searchTd).append($("<br>"));
-  //  $("p").append(ageTd).append($("<br>"));
-  //  $("p").append(crimeTd).append($("<br>"));
+
+  // Create and save a reference to new empty table
+  // const tbody = $('tbody');
+  // Create and save a reference to new empty table row
+  // const row = $("<tr>");
+  // Create and save references to 2 td elements containing the category, month
+//   const catTd = $("<td>").text(categoryTd);
+//   const MonTd = $("<td>").text(monthTd);
+//   console.log("this is catTD: " + catTd);
+// tbody.append(row);
+//  row.append(catTd);
+//  row.append(MonTd);
+//  let p = $('p');
+//  p.append(catTd).append("<br>")
+//  p.append(monTd).append("<br>")
+   
   });
-  
+
+
+const resultsList = document.getElementById('results')
+let value = document.getElementById('searchForm');
+new URLSearchParams(window.location.search).forEach((value, name) => {
+ 
+resultsList.append('${name}: ${value}')
+resultsList.append(document.createElement('br'))
+alert(resultsList)
+})
+
+
+
+

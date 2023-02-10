@@ -1,11 +1,20 @@
 .container,
 .input-group
  {
-
-    max-width: 500px;
-    margin: auto;
+    max-width: 60rem;
+    max-height:35rem;
+    margin: 0 auto;
     display: grid;
+    padding: 0 1em;
+    /* border: 2px solid red; */
+    font-size: 12px;
+    
 }
+.bold {
+    font-size: 14px;
+    font-weight: 700;
+}
+
 select {
     max-width: 450px;
     margin-left: 150px;
@@ -15,5 +24,109 @@ select {
 .input-group {
     margin-right: 675px;
     max-width: 450px;
+}
+
+img {
+    max-width: 100%
+}
+
+@media (min-width: 40em) {
+    header,
+    body {
+        padding: 1rem 0;
+    }
+}
+
+body {
+    display: grid;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* place-content: center; */
+    gap: 2rem;
+    background-image: conic-gradient(
+        at 125% 50%,        
+        rgba(255, 255, 21, 0.7),
+        rgba(68, 57, 235, 0.7),
+        rgba(0, 255, 13, 0.7),
+        rgba(68, 57, 235, 0.7),
+        rgba(255, 255, 21, 0.7)
+    );
+}
+
+.button {
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-family: inherit;
+    font-weight: 700;
+    color: hsl(320, 40%, 40%);
+    background-color: hsl(349 100% 95%);
+    padding: 0.5em 1em;
+    border: 0;
+    border-radius: 1.25rem;
+}
+
+/* code for a glowing button on hover and focus */
+.glow-effect {
+    --glow-line-color: #8fd4f0;
+    --glow-line-thickness: 2px;
+    --glow-blur-color: #8fd4f0;
+    --glow-blur-size: 8px;
+    /* do not change, used for calculations for button glow-effect */
+    --container-offset: 0px;
+    position: relative;
+    --animation-speed: 1200ms;
+}
+.glow-container {
+    pointer-events: none;
+    position: absolute;
+    inset: calc(var(--container-offset) /-2);
+    width: calc(100% + var(--container-offset));
+    height: calc(100% + var(--container-offset));
+    opacity: 0;
+    border: transparent;
+}
+
+.glow-blur,
+.glow-line {
+    width: calc(100% - var(--container-offset));
+    height: calc(100% - var(--container-offset));
+    x: calc(var(--container-offset) /2);
+    y: calc(var(--container-offset) /2);
+    rx: 1.25rem;
+    fill: transparent;
+    stroke: rgb(253, 252, 252);
+    stroke-width: 5px;
+    stroke-dasharray: 10px 40px;  
+}
+
+.glow-line {
+    stroke: var(--glow-line-color);
+    stroke-width: var(--glow-line-thickness);
+}
+
+.glow-blur {
+    filter: blur(5px);
+    stroke: var(--glow-blur-color);
+    stroke-width: var(--glow-blur-size);
+}
+
+/* .glow-effect:is(:hover, :focus) :is(.glow-line, .glow-blur)  { */
+    .glow-effect:is(:hover) :is(.glow-line, .glow-blur)  {
+    stroke-dashoffset: -80px;
+    transition: stroke-dashoffset 
+        var(--animation-speed)
+        ease-in;
+}
+/* .glow-effect:is(:hover, :focus) .glow-container{ */
+    .glow-effect:is(:hover) .glow-container{
+animation: glow-visibility 5000ms;
+transition: stroke-dashoffset 2000ms;
+transition: stroke-dashoffset 
+    var(--animation-speed)
+    ease-in;
+}
+
+@keyframes glow-visibility {
+    0%, 100% { opacity: 0}
+    25%, 75% { opacity: 1}
 
 }
