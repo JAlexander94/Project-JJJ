@@ -154,17 +154,31 @@ $.ajax(settings).then(function (response) {
 
         // define area where crime statistics get published
         const crimeList = document.getElementById('crimeResults');
-        
+       
         // const br5 = $("<br>");
         // publish the data from the object
         output = "";
         for (const key in crimes) {
-          output += key + ": " + crimes[key] + `\n`;
+          output += key + ": " + crimes[key] + `\r\n`;
         }
 // append the data from the output to the crimeList area
-// still need to format the data so it can be separate on each line
+// I've added the id=crimeList to the <pre> tag and that seems to keep the formatting
+        
         crimeList.append(output);
 
+          // define area where PROPERTY statistics get published
+          const propertyList = document.getElementById('propertyResults');
+       
+          // const br5 = $("<br>");
+          // publish the data from the object
+          propertyOutput = "";
+          for (const key in houseprices) {
+            propertyOutput += key + ": " + houseprices[key] + `\r\n`;
+          }
+  // append the data from the output to the crimeList area
+  // I've added the id=crimeList to the <pre> tag and that seems to keep the formatting
+          
+  propertyList.append(propertyOutput);
         
     })
 
