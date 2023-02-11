@@ -90,25 +90,18 @@ console.log(`Price Range: ${priceRange}`);
 console.log(`Postcode: ${postcode}`);
 
 
-resultsList.append("<br>");
+const br1 = $("<br>");
+const br2 = $("<br>");
+const br3 = $("<br>");
+const br4 = $("<br>");
   resultsList.append(`Property Type: ${propertyType}`);
-  resultsList.append$("<br>");
-  // resultsList.append(br);
-  resultsList.append(`Number of Bedrooms: ${bedrooms}`);
-  // resultsList.append(br);
+  resultsList.append(br1.get(0));
+ 
+    resultsList.append(`Number of Bedrooms: ${bedrooms}`);
+    resultsList.append(br2.get(0)); 
   resultsList.append(`Price range: ${priceRange}`);
-  // resultsList.append(br);
+  resultsList.append(br3.get(0));  
   resultsList.append(`Postcode: ${postcode}`);
-
-// // resultsList.append(`Number of bedrooms: ${selectedValue}`);
-  
-//   resultsList.append(br);
-//   resultsList.append(priceRange);
-//   resultsList.append(br);
-//   resultsList.append(postcode);
-
-// }
-
 // getUrlParams();
 
 
