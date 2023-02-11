@@ -1,10 +1,29 @@
+
+.left-container {
+    align-items: left;
+    border: 1px solid black;
+}
+
+.card {
+    flex-basis: 100%;
+    padding: 1rem;
+    background: hsl(0 0% 50% / 0.3);
+    border-radius: 0.25rem;
+    position: relative;
+    }
+
+
+.right-container {
+    align-items: right;
+    border: 1px double red;
+}
 .container,
 .input-group
  {
     max-width: 60rem;
     max-height:35rem;
     margin: 0 auto;
-    display: grid;
+    /* display: grid; */
     padding: 0 1em;
     /* border: 2px solid red; */
     font-size: 12px;

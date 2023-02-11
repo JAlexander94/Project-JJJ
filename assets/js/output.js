@@ -1,16 +1,5 @@
 
-// creating city specific 
-// const brsTMLng = -2.587910;
-// const brsTMLat = 51.454514;
-// const brsUniLng = -2.603288;
-// const brsUniLat = 51.458447;
-// const stJudeLat = 51.45986176148458; 
-// const stJudeLong = -2.5796042120717884;
-// const BS1Lat = 51.448603274535;
-// const BS1Long = -2.601619783368318;
-// created two variables for longitude and latitude
-// const lng = BS1Long;
-// const lat = BS1Lat;
+
 
 
 // // URL from the police api including long and lat data
@@ -162,8 +151,23 @@ $.ajax(settings).then(function (response) {
         if(major_theft.length!=="undefined"){crimes["Major Theft"] = major_theft.length}
         if(arson_violent.length!=="undefined"){crimes["Violent Crime & Arson"] = arson_violent.length}
         console.log(crimes)
-               
+
+        // define area where crime statistics get published
+        const crimeList = document.getElementById('crimeResults');
+        
+        // const br5 = $("<br>");
+        // publish the data from the object
+        output = "";
+        for (const key in crimes) {
+          output += key + ": " + crimes[key] + `\n`;
+        }
+// append the data from the output to the crimeList area
+// still need to format the data so it can be separate on each line
+        crimeList.append(output);
+
+        
     })
+
 });
 
 
@@ -176,3 +180,29 @@ function average(arr){
     return sum / arr.length
 }
 
+// posting the crime data in the crime card area
+// create area and content for the results on Output.html
+// function printCrimeStats() { 
+// const crimeList = document.getElementsByClassName('crimeResults');
+// console.log(`Drugs: ${drugs}`);
+// console.log(`Arson: ${arson}`);
+// console.log(`Violent crimes: ${violent}`);
+// console.log(`Weapons: ${weapons}`);
+
+
+// const br5 = $("<br>");
+// const br6 = $("<br>");
+// const br7 = $("<br>");
+// const br8 = $("<br>");
+//   // resultsList.append(`Property Type: ${propertyType}`);
+//   crimeList.append(br5.get(0));
+ 
+//   crimeList.append(`Drugs: ${drugs}`);
+//   crimeList.append(br6.get(0)); 
+//   crimeList.append(`Arson: ${arson}`);
+//   crimeList.append(br7.get(0));  
+//   crimeList.append(`Violent crimes: ${violent}`);
+//   crimeList.append(br8.get(0));  
+//   crimeList.append(`Weapons: ${weapons}`);
+// }
+// getUrlParams();
