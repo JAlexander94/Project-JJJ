@@ -79,7 +79,7 @@
 <div class="container">
   <h2>Search for your property</h2>
   <form action="./assets/output.html" method="GET" id="searchForm" name="searchForm">
-    <fieldset>
+   
     <label for="propertyType" class="bold">Type of Property</label>
 <select id="selectProperty" name="propertyType" class="formPropertyType" multiple aria-label="multiple select example">
   <option selected>Choose type of property</option>
@@ -88,19 +88,19 @@
   <option name="Any" value="Any">Any</option>
 </select>
 <br>
-<select class="formBedNumber" name="formBedNumber" multiple aria-label="multiple select example">
+<select class="formBedNumber" name="formBedNumber" id="formBedNumber" multiple aria-label="multiple select example">
   <option selected>Choose number of bedrooms</option>
-  <option name="bed1" value="bed1">One</option>
-  <option name="bed2" value="bed2">Two</option>
-  <option name="bed3" value="bed3">Three+</option>
+  <option value="bed1">One</option>
+  <option value="bed2">Two</option>
+  <option  value="bed3">Three+</option>
 </select>
 <br>
 <select class="priceRange multiple" name="priceRange" aria-label="multiple select example">
-  <option name="priceRange" selected>Price Range</option>
-  <option name="price1" value="1">£100,000+</option>
-  <option name="price2" value="2">£100,001 to £200,000</option>
-  <option name="price3" value="3">£200,001 to £300,000</option>
-  <option name="price4" value="4">£300,001+</option>
+  <option  selected>Price Range</option>
+  <option  value="1">£100,000+</option>
+  <option  value="2">£100,001 to £200,000</option>
+  <option  value="3">£200,001 to £300,000</option>
+  <option  value="4">£300,001+</option>
 </select>
 <br>
 <p><strong class="bold">Enter postcode or area</strong></p>
@@ -119,7 +119,7 @@
     </svg>
   </button></label>
   <button type="reset" class="button glow-effect">Clear</button>
-</fieldset>
+
 </form>
 </div>
 

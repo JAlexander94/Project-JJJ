@@ -70,11 +70,46 @@ var queryURLAll = "https://data.police.uk/api/crimes-street/all-crime?lat=" + la
   });
 
   // setting local storage to get data from the form 
-  const house = $('form.propertyType.house');
-localStorage.setItem("house", house);
-localStorage.getItem("house");
+//   const house = $('form.propertyType.house');
+// localStorage.setItem("house", house);
+// localStorage.getItem("house");
+
+// create area and content for the results on Output.html
+const resultsList = document.getElementById('results');
+
+const urlParams = new URLSearchParams(window.location.search);
+
+const propertyType = urlParams.get("propertyType");
+const bedrooms = urlParams.get("formBedNumber");
+const priceRange = urlParams.get("priceRange");
+const postcode = urlParams.get("postcode");
+
+console.log(`Property Type: ${propertyType}`);
+console.log(`Bedrooms: ${bedrooms}`);
+console.log(`Price Range: ${priceRange}`);
+console.log(`Postcode: ${postcode}`);
 
 
+resultsList.append("<br>");
+  resultsList.append(`Property Type: ${propertyType}`);
+  resultsList.append$("<br>");
+  // resultsList.append(br);
+  resultsList.append(`Number of Bedrooms: ${bedrooms}`);
+  // resultsList.append(br);
+  resultsList.append(`Price range: ${priceRange}`);
+  // resultsList.append(br);
+  resultsList.append(`Postcode: ${postcode}`);
+
+// // resultsList.append(`Number of bedrooms: ${selectedValue}`);
+  
+//   resultsList.append(br);
+//   resultsList.append(priceRange);
+//   resultsList.append(br);
+//   resultsList.append(postcode);
+
+// }
+
+// getUrlParams();
 
 
 
