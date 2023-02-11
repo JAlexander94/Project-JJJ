@@ -103,16 +103,22 @@
   <option  value="4">£300,001+</option>
 </select>
 <br>
-<p><strong class="bold">Enter postcode or area</strong></p>
+<p><strong class="bold">Enter postcode</strong></p>
 <div class="input-group mb-3">
   <span class="input-group-text" id="basic-addon1"></span>
-  <input type="text" name="postcode" class="form-control" aria-label="Postcode" placeholder="e.g. BS1 or Bristol" required>
+  <input type="text" name="postcode" class="form-control" aria-label="Postcode" placeholder="e.g. BS1 5AD" required>
+</div>
+
+<p><strong class="bold">Enter postcode</strong></p>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1"></span>
+  <input type="text" name="area" class="form-control" aria-label="Area" placeholder="e.g. Bristol" required>
 </div>
 
 <div class="col-12">
  <label for="button">
   <button type="submit" value="Submit" 
-  class="button glow-effect form-control priceRange formBedNumber formPropertyType">Search
+  class="button glow-effect">Search
     <svg class="glow-container">
       <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
       <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
@@ -135,7 +141,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- <script src="assets/js/script.js"></script> -->
+  <script src="assets/js/output.js"> </script>
+  <!-- <script src="assets/js/script.js"> </script> -->
 </body>
 <footer class="bold">Copyright @ Triple JJJ 2023</footer>
 </html>
