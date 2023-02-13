@@ -1,0 +1,21 @@
+#image-card{
+    border: none;
+}
+
+h3{
+    text-align: center;
+    padding: 5px;
+}
+
+.container-fluid{
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.list-group-item {
+    padding: 0.75rem 0rem;
+}
+
+#text{
+    padding:5px;
+}
