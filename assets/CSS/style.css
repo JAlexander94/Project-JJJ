@@ -1,4 +1,4 @@
-
+/* setting this up to pull the property price data to the left */
 .left-container {
     align-items: left;
     border: 1px solid black;
@@ -12,7 +12,7 @@
     position: relative;
     }
 
-
+/* the right container pulls crime data to the right */
 .right-container {
     align-items: right;
     border: 1px double red;
