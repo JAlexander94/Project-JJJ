@@ -4,78 +4,19 @@ body {
   }
 
 
-.container,
-.input-group
- {
-
-    max-width: 500px;
-    margin: auto;
-    display: grid;
-}
-select {
-    max-width: 450px;
-    margin-left: 150px;
-    display: grid;
-}
-
-.input-group {
-    margin-right: 675px;
-    max-width: 450px;
-
-}
-
-.left-container {
-    align-items: left;
-    border: 1px solid black;
-}
-
-.card {
-    flex-basis: 100%;
-    padding: 1rem;
-    background: hsl(0 0% 50% / 0.3);
-    border-radius: 0.25rem;
-    position: relative;
-    }
-
-
-.right-container {
-    align-items: right;
-    border: 1px double red;
-}
-.container,
-.input-group
- {
+.input-group{
     max-width: 60rem;
     max-height:35rem;
     margin: 0 auto;
     /* display: grid; */
     padding: 0 1em;
     /* border: 2px solid red; */
-    font-size: 12px;
-    
+    font-size: 12px;  
 }
+
 .bold {
     font-size: 14px;
     font-weight: 700;
-}
-
-a {
-        color: white;
-    }
-
-select {
-    max-width: 450px;
-    margin-left: 150px;
-    display: grid;
-}
-
-.input-group {
-    margin-right: 675px;
-    max-width: 450px;
-}
-
-img {
-    max-width: 100%
 }
 
 @media (min-width: 40em) {
@@ -86,7 +27,6 @@ img {
 }
 
 body {
-    display: grid;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     /* place-content: center; */
     gap: 2rem;
@@ -99,9 +39,6 @@ body {
         rgba(238, 37, 104, 0.7),
         rgba(255, 255, 21, 0.7)
     );
-}
-nav {
-    background-color: violet;
 }
 
 .button {
@@ -141,9 +78,7 @@ nav {
 .glow-line {
     width: calc(100% - var(--container-offset));
     height: calc(100% - var(--container-offset));
-    x: calc(var(--container-offset) /2);
-    y: calc(var(--container-offset) /2);
-    rx: 1.25rem;
+    rx: 1rem;
     fill: transparent;
     stroke: rgb(253, 252, 252);
     stroke-width: 5px;
@@ -161,15 +96,14 @@ nav {
     stroke-width: var(--glow-blur-size);
 }
 
-/* .glow-effect:is(:hover, :focus) :is(.glow-line, .glow-blur)  { */
-    .glow-effect:is(:hover) :is(.glow-line, .glow-blur)  {
+.glow-effect:is(:hover) :is(.glow-line, .glow-blur)  {
     stroke-dashoffset: -80px;
     transition: stroke-dashoffset 
         var(--animation-speed)
         ease-in;
 }
-/* .glow-effect:is(:hover, :focus) .glow-container{ */
-    .glow-effect:is(:hover) .glow-container{
+
+.glow-effect:is(:hover) .glow-container{
 animation: glow-visibility 5000ms;
 transition: stroke-dashoffset 2000ms;
 transition: stroke-dashoffset 
@@ -180,8 +114,8 @@ transition: stroke-dashoffset
 @keyframes glow-visibility {
     0%, 100% { opacity: 0}
     25%, 75% { opacity: 1}
-
 }
+
 footer{
     position: fixed;
     bottom: 0;
@@ -190,4 +124,12 @@ footer{
 }
 nav{
     height: fit-content;
+}
+
+.container{
+    background-image: url("../images/Logo.png");
+    background-size: cover;
+    position: relative;
+    top: 10vh;
+    height: 50vh;
 }
