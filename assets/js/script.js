@@ -1,15 +1,18 @@
+const urlParams = new URLSearchParams(window.location.search);
+const postcodent = urlParams.get("area")
+var postcode = postcodent.trim()
+searchpostcode(postcode)
+
 
 $("#searchbtn").on("click",function(event){
     event.preventDefault()
     $("#properties").empty()
     $("#prices").empty()
     $("#crimes").empty()
-    var postcode = $("#search").val().trim()
+    postcode = $("#search").val().trim()
     if(postcode===""){return}else{searchpostcode(postcode)}
     $("#search").val("")
-
 })
-
 
 //call the zoopla api via rapidapi for the area in the url above and average the house prices
 function searchpostcode(postcode){
@@ -25,6 +28,7 @@ $.ajax({
     let houseprices = {}
     let responseobject = Object.keys(response)
     let detached = responseobject.find(element => element === "detached")
+    console.log(response)
     if(typeof detached !== "undefined"){houseprices["Detached"] = response.detached['5_years'].average_price_paid}
     let semi_detached = responseobject.find(element => element === "semi_detached")
     if(typeof semi_detached !== "undefined"){houseprices["Semi Detached"] = response.semi_detached['5_years'].average_price_paid}

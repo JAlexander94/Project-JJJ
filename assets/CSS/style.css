@@ -3,9 +3,6 @@ body {
     padding: 0;
   }
 
-navbar{
-    
-}
 
 .container,
 .input-group
@@ -93,6 +90,7 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     /* place-content: center; */
     gap: 2rem;
+    min-height: 100vh;
     background-image: conic-gradient(
         at 125% 50%,        
         rgba(255, 255, 21, 0.7),
@@ -183,4 +181,13 @@ transition: stroke-dashoffset
     0%, 100% { opacity: 0}
     25%, 75% { opacity: 1}
 
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    padding-left: 2vh;
+    height: 5vh;
+}
+nav{
+    height: fit-content;
 }
