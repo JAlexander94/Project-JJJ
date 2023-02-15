@@ -1,21 +1,106 @@
+let history = [];
+indinit()
+const urlParams = new URLSearchParams(window.location.search);
+const postcodent = urlParams.get("area")
+var postcode = postcodent.trim()
+if(postcode!==""){
+    searchpostcode(postcode)
+    searchlistings(postcode)
+}else{
+    var housepricediv = $("<div></div>")
+    housepricediv.attr("class","card")
+    var housepr = $("<ul></ul>")
+    housepr.attr("class","list-group list-group-flush")
+    housepr.append("There is no data for this postcode. Please try again.")
+    housepricediv.append(housepr)
+    $("#prices").append(housepricediv)
+}
+
+init()
+
+if(history.includes(postcode)||postcode===""){}else{
+    history.push(postcode)
+    localStorage.setItem("history",JSON.stringify(history))
+    $("#postcodehistory").empty()
+    populatehistory(postcode)
+} 
 
 
-const settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://zoopla.p.rapidapi.com/house-prices/get-market-activity?area=co101pq",
-	"method": "GET",
-	"headers": {
-		"X-RapidAPI-Key": "7dd7c3d5e5msh5597199b6be8500p1bd494jsnfd9a07e9ce01",
-		"X-RapidAPI-Host": "zoopla.p.rapidapi.com"
-	}
-};
+function init(){
+    history = JSON.parse(localStorage.getItem("history"))
+    if(history===null){history = []}else{
+        populatehistory()
+    }
+}
+
+function indinit(){
+    history = JSON.parse(localStorage.getItem("history"))
+    if(history===null){history = []}else{
+    for(i=0;i<history.length;i++){
+        var posthist = $("<button></button>").text(history[i])
+        posthist.attr("class","btn btn-secondary")
+        posthist.attr("id","postbutton")
+        posthist.attr("type","text")
+        posthist.attr("name","area")
+        posthist.attr("value",history[i])
+        $("#indpostcodehistory").append(posthist)
+    }
+    }
+}
+
+function populatehistory(postcode){
+    for(i=0;i<history.length;i++){
+        var posthist = $("<button></button>").text(history[i])
+        posthist.attr("class","btn btn-secondary")
+        posthist.attr("data-postcode",postcode)
+        posthist.attr("id","postbutton")
+        $("#postcodehistory").append(posthist)
+    }
+}
+
+$("#searchbtn").on("click",function(event){
+    event.preventDefault()
+    $("#properties").empty()
+    $("#prices").empty()
+    $("#crimes").empty()
+    postcode = $("#search").val().trim()
+    if(postcode===""){return}else{
+        searchpostcode(postcode)
+        searchlistings(postcode)
+    }
+    if(history.includes(postcode)){return}else{
+        history.push(postcode)
+        localStorage.setItem("history",JSON.stringify(history))
+        $("#postcodehistory").empty()
+        populatehistory(postcode)}
+    $("#search").val("")
+})
+
+$("#postcodehistory").on("click","button",function(event){
+    event.preventDefault()
+    $("#properties").empty()
+    $("#prices").empty()
+    $("#crimes").empty()
+    postcode = $(this).text()
+    searchpostcode(postcode)
+    searchlistings(postcode)
+})
 
 //call the zoopla api via rapidapi for the area in the url above and average the house prices
-$.ajax(settings).then(function (response) {
+function searchpostcode(postcode){
+$.ajax({
+    "async": true,
+	"crossDomain": true,
+	"url": "https://zoopla.p.rapidapi.com/house-prices/get-market-activity?area="+postcode,
+	"method": "GET",
+	"headers": {
+		"X-RapidAPI-Key": "6156dd255fmshe3b2167ef08204ep13744cjsn7586408dcfe8",
+		"X-RapidAPI-Host": "zoopla.p.rapidapi.com"}
+}).then(function (response) {
     let houseprices = {}
     let responseobject = Object.keys(response)
     let detached = responseobject.find(element => element === "detached")
+    console.log(response)
     if(typeof detached !== "undefined"){houseprices["Detached"] = response.detached['5_years'].average_price_paid}
     let semi_detached = responseobject.find(element => element === "semi_detached")
     if(typeof semi_detached !== "undefined"){houseprices["Semi Detached"] = response.semi_detached['5_years'].average_price_paid}
@@ -23,7 +108,32 @@ $.ajax(settings).then(function (response) {
     if(typeof terraced !== "undefined"){houseprices["Terraced"] = response.terraced['5_years'].average_price_paid}
     let flat = responseobject.find(element => element === "flat")
     if(typeof flat !== "undefined"){houseprices["Flat"] = response.flat['5_years'].average_price_paid}
-    console.log(houseprices)
+   
+        var housepricediv = $("<div></div>")
+        housepricediv.attr("class","card")
+        var housepr = $("<ul></ul>")
+        housepr.attr("class","list-group list-group-flush")
+        //checking if the postcode, lon or lat fields are undefined
+        if (response.error_code =='5') {
+            // data property is empty
+            housepr.append("There is no data for this postcode. Please try again.")
+          }
+        for (var key in houseprices) {
+            var type = $("<div></div>").text(key)
+            var price = $("<div></div>").text("£"+houseprices[key].toLocaleString("en-US"))
+            type.attr("class","col-6")
+            type.attr("style","border-right: 1px solid black")
+            type.attr("id","text")
+            price.attr("class","col-6")
+            price.attr("id","text")
+            var priceli = $("<li></li>")
+            priceli.attr("class","list-group-item d-flex")
+            priceli.append(type,price)
+            housepr.append(priceli)
+          }
+        housepricediv.append(housepr)
+        $("#prices").append(housepricediv)
+    
     //take the central latitude and longitude from the zoopla API for use with the police API and construct the police API query
     let lat = response.latitude
     let lon = response.longitude
@@ -55,16 +165,55 @@ $.ajax(settings).then(function (response) {
         if(petty_theft.length!=="undefined"){crimes["Petty Theft"] = petty_theft.length}
         if(major_theft.length!=="undefined"){crimes["Major Theft"] = major_theft.length}
         if(arson_violent.length!=="undefined"){crimes["Violent Crime & Arson"] = arson_violent.length}
-        console.log(crimes)
+            var crimesdiv = $("<div></div>")
+            crimesdiv.attr("class","card")
+            var crimeul = $("<ul></ul>")
+            crimeul.attr("class","list-group list-group-flush")
+            for (var key in crimes) {
+                var crtype = $("<div></div>").text(key)
+                var crnum = $("<div></div>").text(crimes[key])
+                crtype.attr("class","col-6")
+                crtype.attr("style","border-right: 1px solid black")
+                crtype.attr("id","text")
+                crnum.attr("class","col-6")
+                crnum.attr("id","text")
+                var crimeli = $("<li></li>")
+                crimeli.attr("class","list-group-item d-flex")
+                crimeli.append(crtype,crnum)
+                crimeul.append(crimeli)
+            }
+            crimesdiv.append(crimeul)
+            $("#crimes").append(crimesdiv)
     })
 });
+}
+function searchlistings(postcode){
+    $.ajax({
+        "async": true,
+        "crossDomain": true,
+        "url": "https://zoopla.p.rapidapi.com/properties/list?area="+postcode+"&category=residential&listing_status=sale&order_by=age&ordering=descending&page_number=1&page_size=5&radius=1",
+        "method": "GET",
+        "headers": {
+            "X-RapidAPI-Key": "6156dd255fmshe3b2167ef08204ep13744cjsn7586408dcfe8",
+            "X-RapidAPI-Host": "zoopla.p.rapidapi.com"
+        }
+    }).then(function (response) {
+        var listingsdiv = $("<div></div>")
+        listingsdiv.attr("class","card")
+        var listingsul = $("<ul></ul>")
+        listingsul.attr("class","list-group list-group-flush")
+        for(let i=0;i<response.listing.length;i++){
+            var listing = $("<a></a>").text(response.listing[i].title)
+            listing.attr("class","btn btn-primary")
+            listing.attr("href",response.listing[i].details_url)
+            var listingli = $("<li></li>")
+            listingli.attr("class","list-group-item")
+            listingli.append(listing)
+            listingsul.append(listingli)
+        }
+        listingsdiv.append(listingsul)
+        $("#properties").append(listingsdiv)
+        
+    });
 
-
-// function to average arrays
-function average(arr){
-    let sum = 0
-    for (let i = 0;i<arr.length;i++){
-        sum+= arr[i]
-    }
-    return sum / arr.length
 }
