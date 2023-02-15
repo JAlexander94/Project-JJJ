@@ -146,6 +146,12 @@ nav{
     text-align: center;
     padding: 3vh;
 }
-#postcodehistory{
-    padding: 1vw;
+#postbutton{
+    margin-right: 2vw;
+}
+#history{
+    margin-top: 8vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }

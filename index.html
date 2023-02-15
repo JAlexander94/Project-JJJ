@@ -34,33 +34,39 @@
 
 
 <!-- search form -->
-<div class="container">
-  <div class="card">
-    <h2>Search for your Area</h2>
-    <form action="results.html" method="GET" id="searchForm" name="searchForm">
-      <p><strong class="bold">Enter postcode</strong></p>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1"></span>
-        <input type="text" id="indsearch" name="area" class="form-control" aria-label="Area" placeholder="e.g. co10 1pq">
-      </div>
+<div class="row">
+  <div class="container">
+    <div class="card">
+      <h2>Search for your Area</h2>
+      <form action="results.html" method="GET" id="searchForm" name="searchForm">
+        <p><strong class="bold">Enter postcode</strong></p>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"></span>
+          <input type="text" id="indsearch" name="area" class="form-control" aria-label="Area" placeholder="e.g. co10 1pq">
+        </div>
 
-      <div class="col-12">
-        <label for="button">
-          <button type="submit" value="Submit" id="indsearchbtn" 
-            class="button glow-effect">Search
-            <svg class="glow-container">
-              <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-              <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-            </svg>
-          </button>
-        </label>
-        <button type="reset" class="button glow-effect">Clear</button>
-      </div>
-    </form>
+        <div class="col-12">
+          <label for="button">
+            <button type="submit" value="Submit" id="indsearchbtn" 
+              class="button glow-effect">Search
+              <svg class="glow-container">
+                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+              </svg>
+            </button>
+          </label>
+          <button type="reset" class="button glow-effect">Clear</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
-<div id="postcodehistory">
-  
+<div class="row" id="history">
+  <div class="col-12 pt-5">
+    <h3>Past Searches</h3>
+    <form action="results.html" method="GET" id="indpostcodehistory">
+    </form>
+</div>
 </div>
 
 <footer>Copyright @ Triple JJJ 2023</footer>

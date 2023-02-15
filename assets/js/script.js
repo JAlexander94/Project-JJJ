@@ -1,8 +1,9 @@
+let history = [];
+indinit()
 const urlParams = new URLSearchParams(window.location.search);
 const postcodent = urlParams.get("area")
 var postcode = postcodent.trim()
 searchpostcode(postcode)
-let history = [];
 
 init()
 
@@ -18,6 +19,20 @@ function init(){
     history = JSON.parse(localStorage.getItem("history"))
     if(history===null){history = []}else{
         populatehistory()
+    }
+}
+
+function indinit(){
+    history = JSON.parse(localStorage.getItem("history"))
+    if(history===null){history = []}else{
+    for(i=0;i<history.length;i++){
+        var posthist = $("<button></button>").text(history[i])
+        posthist.attr("class","btn btn-secondary")
+        posthist.attr("id","postbutton")
+        posthist.attr("type","text")
+        posthist.attr("name","area")
+        $("#indpostcodehistory").append(posthist)
+    }
     }
 }
 
