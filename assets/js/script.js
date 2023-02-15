@@ -31,6 +31,7 @@ function indinit(){
         posthist.attr("id","postbutton")
         posthist.attr("type","text")
         posthist.attr("name","area")
+        posthist.attr("value",history[i])
         $("#indpostcodehistory").append(posthist)
     }
     }
