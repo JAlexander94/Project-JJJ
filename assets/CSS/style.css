@@ -132,4 +132,17 @@ nav{
     position: relative;
     top: 10vh;
     height: 50vh;
+    padding: 10vh;
+    border-radius: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3vh;
 }
