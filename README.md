@@ -30,15 +30,15 @@ They can book a viewing with the estate agent.
 
 Click the link to run the website
 
-
+https://jalexander94.github.io/Project-JJJ/
 
 ## Usage
 
-Search for property prices and crime rites by typing into the search bar and clicking search;
+Search for property prices and crime rates by typing into the search bar and clicking search;
 
-![screenshot of ]()
-![screenshot of ]()
-![screenshot of ]()
+![screenshot of the serach page reading to be used](https://github.com/JAlexander94/Project-JJJ/blob/main/assets/images/Screenshot%202023-02-15%20at%2020.30.26.png)
+![screenshot of the results page with history buttons added from local storage](https://github.com/JAlexander94/Project-JJJ/blob/main/assets/images/Screenshot%202023-02-15%20at%2020.31.14.png)
+![screenshot of the initial search page after a few uses with history buttons added from local storage](https://github.com/JAlexander94/Project-JJJ/blob/main/assets/images/Screenshot%202023-02-15%20at%2020.35.50.png)
 
 ## License
 
