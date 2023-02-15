@@ -3,11 +3,19 @@ indinit()
 const urlParams = new URLSearchParams(window.location.search);
 const postcodent = urlParams.get("area")
 var postcode = postcodent.trim()
-searchpostcode(postcode)
+if(postcode!==""){searchpostcode(postcode)}else{
+    var housepricediv = $("<div></div>")
+    housepricediv.attr("class","card")
+    var housepr = $("<ul></ul>")
+    housepr.attr("class","list-group list-group-flush")
+    housepr.append("There is no data for this postcode. Please try again.")
+    housepricediv.append(housepr)
+    $("#prices").append(housepricediv)
+}
 
 init()
 
-if(history.includes(postcode)){}else{
+if(history.includes(postcode)||postcode===""){}else{
     history.push(postcode)
     localStorage.setItem("history",JSON.stringify(history))
     $("#postcodehistory").empty()
@@ -98,6 +106,11 @@ $.ajax({
         housepricediv.attr("class","card")
         var housepr = $("<ul></ul>")
         housepr.attr("class","list-group list-group-flush")
+        //checking if the postcode, lon or lat fields are undefined
+        if (response.error_code =='5') {
+            // data property is empty
+            housepr.append("There is no data for this postcode. Please try again.")
+          }
         for (var key in houseprices) {
             var type = $("<div></div>").text(key)
             var price = $("<div></div>").text("£"+houseprices[key].toLocaleString("en-US"))
