@@ -2,7 +2,34 @@ const urlParams = new URLSearchParams(window.location.search);
 const postcodent = urlParams.get("area")
 var postcode = postcodent.trim()
 searchpostcode(postcode)
+let history = [];
 
+init()
+
+if(history.includes(postcode)){}else{
+    history.push(postcode)
+    localStorage.setItem("history",JSON.stringify(history))
+    $("#postcodehistory").empty()
+    populatehistory(postcode)
+} 
+
+
+function init(){
+    history = JSON.parse(localStorage.getItem("history"))
+    if(history===null){history = []}else{
+        populatehistory()
+    }
+}
+
+function populatehistory(postcode){
+    for(i=0;i<history.length;i++){
+        var posthist = $("<button></button>").text(history[i])
+        posthist.attr("class","btn btn-secondary")
+        posthist.attr("data-postcode",postcode)
+        posthist.attr("id","postbutton")
+        $("#postcodehistory").append(posthist)
+    }
+}
 
 $("#searchbtn").on("click",function(event){
     event.preventDefault()
@@ -11,7 +38,21 @@ $("#searchbtn").on("click",function(event){
     $("#crimes").empty()
     postcode = $("#search").val().trim()
     if(postcode===""){return}else{searchpostcode(postcode)}
+    if(history.includes(postcode)){return}else{
+        history.push(postcode)
+        localStorage.setItem("history",JSON.stringify(history))
+        $("#postcodehistory").empty()
+        populatehistory(postcode)}
     $("#search").val("")
+})
+
+$("#postcodehistory").on("click","button",function(event){
+    event.preventDefault()
+    $("#properties").empty()
+    $("#prices").empty()
+    $("#crimes").empty()
+    postcode = $(this).text()
+    searchpostcode(postcode)
 })
 
 //call the zoopla api via rapidapi for the area in the url above and average the house prices

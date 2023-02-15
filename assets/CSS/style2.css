@@ -19,3 +19,14 @@ h3{
 #text{
     padding:5px;
 }
+
+footer{
+    position: fixed;
+    bottom: 0;
+    padding-left: 2vh;
+    height: 5vh;
+}
+
+#postbutton{
+    margin-right: 2vw;
+}
