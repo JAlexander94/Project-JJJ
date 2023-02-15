@@ -3,7 +3,10 @@ indinit()
 const urlParams = new URLSearchParams(window.location.search);
 const postcodent = urlParams.get("area")
 var postcode = postcodent.trim()
-if(postcode!==""){searchpostcode(postcode)}else{
+if(postcode!==""){
+    searchpostcode(postcode)
+    searchlistings(postcode)
+}else{
     var housepricediv = $("<div></div>")
     housepricediv.attr("class","card")
     var housepr = $("<ul></ul>")
@@ -61,7 +64,10 @@ $("#searchbtn").on("click",function(event){
     $("#prices").empty()
     $("#crimes").empty()
     postcode = $("#search").val().trim()
-    if(postcode===""){return}else{searchpostcode(postcode)}
+    if(postcode===""){return}else{
+        searchpostcode(postcode)
+        searchlistings(postcode)
+    }
     if(history.includes(postcode)){return}else{
         history.push(postcode)
         localStorage.setItem("history",JSON.stringify(history))
@@ -77,6 +83,7 @@ $("#postcodehistory").on("click","button",function(event){
     $("#crimes").empty()
     postcode = $(this).text()
     searchpostcode(postcode)
+    searchlistings(postcode)
 })
 
 //call the zoopla api via rapidapi for the area in the url above and average the house prices
@@ -179,4 +186,34 @@ $.ajax({
             $("#crimes").append(crimesdiv)
     })
 });
+}
+function searchlistings(postcode){
+    $.ajax({
+        "async": true,
+        "crossDomain": true,
+        "url": "https://zoopla.p.rapidapi.com/properties/list?area="+postcode+"&category=residential&listing_status=sale&order_by=age&ordering=descending&page_number=1&page_size=5&radius=1",
+        "method": "GET",
+        "headers": {
+            "X-RapidAPI-Key": "6156dd255fmshe3b2167ef08204ep13744cjsn7586408dcfe8",
+            "X-RapidAPI-Host": "zoopla.p.rapidapi.com"
+        }
+    }).then(function (response) {
+        var listingsdiv = $("<div></div>")
+        listingsdiv.attr("class","card")
+        var listingsul = $("<ul></ul>")
+        listingsul.attr("class","list-group list-group-flush")
+        for(let i=0;i<response.listing.length;i++){
+            var listing = $("<a></a>").text(response.listing[i].title)
+            listing.attr("class","btn btn-primary")
+            listing.attr("href",response.listing[i].details_url)
+            var listingli = $("<li></li>")
+            listingli.attr("class","list-group-item")
+            listingli.append(listing)
+            listingsul.append(listingli)
+        }
+        listingsdiv.append(listingsul)
+        $("#properties").append(listingsdiv)
+        
+    });
+
 }
