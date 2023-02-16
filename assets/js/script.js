@@ -1,5 +1,7 @@
 let history = [];
+//call initialisation of the buttons on the search page
 indinit()
+//pulls data from the url into javasxcript from clicking the search button on the search page and then uses that to fill out the page with the api info
 const urlParams = new URLSearchParams(window.location.search);
 const postcodent = urlParams.get("area")
 var postcode = postcodent.trim()
@@ -15,9 +17,9 @@ if(postcode!==""){
     housepricediv.append(housepr)
     $("#prices").append(housepricediv)
 }
-
+//calls initialisation of the buttons on the results page
 init()
-
+//adds newly searched for postcode into local history and adds it as a button on the results page
 if(history.includes(postcode)||postcode===""){}else{
     history.push(postcode)
     localStorage.setItem("history",JSON.stringify(history))
@@ -25,14 +27,14 @@ if(history.includes(postcode)||postcode===""){}else{
     populatehistory(postcode)
 } 
 
-
+//initialisation function initialising the resulst page with historical buttons oulled form local storage
 function init(){
     history = JSON.parse(localStorage.getItem("history"))
     if(history===null){history = []}else{
         populatehistory()
     }
 }
-
+//initialisation fucntion initialising the search page with historical buttons from local storage
 function indinit(){
     history = JSON.parse(localStorage.getItem("history"))
     if(history===null){history = []}else{
@@ -47,7 +49,7 @@ function indinit(){
     }
     }
 }
-
+//the function which populates the historical buttons on the results page using the history variable which has been filled on initialisation from local storage
 function populatehistory(postcode){
     for(i=0;i<history.length;i++){
         var posthist = $("<button></button>").text(history[i])
@@ -57,7 +59,7 @@ function populatehistory(postcode){
         $("#postcodehistory").append(posthist)
     }
 }
-
+// event listener which operates if user uses the search function in the nav to look for a new postcode and populates the api info and adds that postcode to buttons and local storage
 $("#searchbtn").on("click",function(event){
     event.preventDefault()
     $("#properties").empty()
@@ -75,7 +77,7 @@ $("#searchbtn").on("click",function(event){
         populatehistory(postcode)}
     $("#search").val("")
 })
-
+//event listener which operates when a user clicks one of the historical buttons and populates the api info
 $("#postcodehistory").on("click","button",function(event){
     event.preventDefault()
     $("#properties").empty()
@@ -86,8 +88,9 @@ $("#postcodehistory").on("click","button",function(event){
     searchlistings(postcode)
 })
 
-//call the zoopla api via rapidapi for the area in the url above and average the house prices
+//function which populates results page with the info from the apis
 function searchpostcode(postcode){
+//calls the zoopla api via rapidapi for a given postcode and then adds the house price information to the prices div in results page and makes a lat and lon variable for the police api
 $.ajax({
     "async": true,
 	"crossDomain": true,
@@ -187,6 +190,7 @@ $.ajax({
     })
 });
 }
+//function which uses the postcode via the zoopla api in rapid api to add clickable buttons with the most recent 5 listings within 1 mile of that location which click through to the zoopla page 
 function searchlistings(postcode){
     $.ajax({
         "async": true,
