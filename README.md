@@ -20,7 +20,7 @@ The user will have fulfilled their search when they know the crime levels in the
 
 The user gets the house price, details about the house [[number of bedrooms, bathrooms, garden or not, pictures]] and the neighbourhood information about the crime levels.
 
-# Additional:
+# Additional for future upgrades:
 They could also reverse search from areas with a certain level of crime and link that back to houses available to purchase.
 
 Bonus:
@@ -67,4 +67,4 @@ SOFTWARE.
 
 ## Tests
 
-Test the site by typing a city into the search and looking at the weather forecast or cliking one of the hostroy buttons to get a forecast
+Test the site by typing a postcode into the search bar on the search page and then clicking search or clicking one of the historical buttons
